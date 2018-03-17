@@ -77,7 +77,7 @@ namespace Спектральный_анализ_v._2._0
             }
         }
 
-        public async Task Start(int countCube)
+        public void Start(int countCube)
         {
             if (!Directory.Exists(ResultPath))
                 Directory.CreateDirectory(ResultPath);

@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Net.Mime;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
@@ -102,7 +103,10 @@ namespace Спектральный_анализ_v._2._0
 
         private async void Start()
         {
-           await _workPlace.Start(_cCube);
+            await Task.Run(() =>
+            {
+                _workPlace?.Start(_cCube);
+            });
         }
 
         private void ViewPapks()
