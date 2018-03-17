@@ -132,6 +132,7 @@ namespace Спектральный_анализ_v._2._0
             FilesPath = _workPlace.Path;
             FilesPathes = _workPlace.FilesPaths;
             FilesNames = _workPlace.FilesNames;
+            //lalalaalallaal
         }
 
         public void Dispose()
