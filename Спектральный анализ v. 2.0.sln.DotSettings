@@ -1,0 +1,2 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:Boolean x:Key="/Default/CodeInspection/CodeAnnotations/NamespacesWithAnnotations/=_0421_043F_0435_043A_0442_0440_0430_043B_044C_043D_044B_0439_005F_0430_043D_0430_043B_0438_0437_005Fv_002E_005F2_002E_005F0_002EAnnotations/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>
