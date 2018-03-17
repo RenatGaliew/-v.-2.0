@@ -12,6 +12,7 @@ namespace Спектральный_анализ_v._2._0
 {
     public class WorkingPlace
     {
+        public event EventHandler<int> Increment;
         private bool _isReturn = false;
         private bool _analyzDifferenceImage = true;
         private bool _saveDifferenceImage = true;
@@ -95,6 +96,7 @@ namespace Спектральный_анализ_v._2._0
                 if (i < FilesPaths.Count - 2)
                     Analyzis(fileName, countCube, i, FilesPaths[i++], ref lastArray, ref lastArrayInt,
                         FilesPaths[i + 1]);
+                Increment?.Invoke(this,i);
             }
             AccessesExcel[0].FinishAccess();
             AccessesExcel[1].FinishAccess();

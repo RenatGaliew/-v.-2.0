@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Спектральный_анализ_v._2._0"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Спектральный анализ" Height="350" Width="525">
     <Window.DataContext>
         <local:ViewModel />
     </Window.DataContext>
@@ -34,21 +34,36 @@
             <Grid Grid.Column="1" Background="LightGray">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="24"/>
+                    <RowDefinition Height="24"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <StackPanel Grid.Row="0" Orientation="Horizontal">
-                    <TextBox Background="Transparent"
+                    <TextBox 
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Background="Transparent"
+                        BorderBrush="Transparent"
                         HorizontalAlignment="Stretch"
                         Text="Деление куба:"/>
                     <TextBox
+                        Width="50"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        BorderBrush="Transparent"
                         Background="Transparent"
                         HorizontalAlignment="Stretch"
                         Text="{Binding CountCube, Mode=TwoWay}"/>
-                    <Button Command="{Binding StartCommand}">Start</Button>
                 </StackPanel>
+                <Button Grid.Row="0" Width="50"
+                    Command="{Binding StartCommand}" HorizontalAlignment="Right" Content="Старт">
+                </Button>
+                <ProgressBar Grid.Row="1" Orientation="Horizontal" 
+                              Value= "{Binding Inkrement, Mode=TwoWay}"
+                             Maximum = "{Binding FilesNames.Count, Mode=OneWay}"
+                             Minimum = "0"></ProgressBar>
                 <Image 
                     Grid.Column="0" 
-                    Grid.Row="1" 
+                    Grid.Row="2" 
                     Source="{Binding SelectedImage,Mode=TwoWay}"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"

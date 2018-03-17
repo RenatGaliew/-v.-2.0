@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Net.Mime;
 using System.Runtime.CompilerServices;
@@ -12,9 +13,19 @@ using System.Windows.Media.Imaging;
 
 namespace Спектральный_анализ_v._2._0
 {
-    public class ViewModel : INotifyPropertyChanged
+    public class ViewModel : INotifyPropertyChanged, IDisposable
     {
-        public ICommand StartCommand { get; set; }
+        public int Inkrement
+        {
+            get => _inkrement;
+            set
+            {
+                _inkrement = value;
+                OnPropertyChanged(nameof(Inkrement));
+            }
+        }
+        private int _inkrement { get; set; }
+        public ICommand StartCommand { get; }
         private WorkingPlace _workPlace;
         private string _filePath;
         private BitmapSource _selectedImage;
@@ -94,11 +105,17 @@ namespace Спектральный_анализ_v._2._0
         {
             FilesPath = Application.StartupPath;
             _workPlace = new WorkingPlace(FilesPath);
+            _workPlace.Increment += WorkPlaceOnIncrement;
             FilesPathes = _workPlace.FilesPaths;
             FilesNames = _workPlace.FilesNames;
 
             ViewerCommand = new RelayCommand(ViewPapks);
             StartCommand = new RelayCommand(Start);
+        }
+
+        private void WorkPlaceOnIncrement(object sender, int i1)
+        {
+            Inkrement = i1;
         }
 
         private async void Start()
@@ -115,6 +132,11 @@ namespace Спектральный_анализ_v._2._0
             FilesPath = _workPlace.Path;
             FilesPathes = _workPlace.FilesPaths;
             FilesNames = _workPlace.FilesNames;
+        }
+
+        public void Dispose()
+        {
+            _workPlace.Increment -= WorkPlaceOnIncrement;
         }
     }
 }
